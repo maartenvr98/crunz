@@ -8,6 +8,7 @@ use Crunz\Application\Query\TaskInformation\TaskInformation;
 use Crunz\Application\Query\TaskInformation\TaskInformationHandler;
 use Crunz\Application\Query\TaskInformation\TaskInformationView;
 use Crunz\Task\TaskNumber;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableCell;
@@ -16,6 +17,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(name: 'task:debug')]
 final class DebugTaskCommand extends Command
 {
     /** @var string */
@@ -40,7 +42,7 @@ final class DebugTaskCommand extends Command
                 InputArgument::REQUIRED,
                 'Task number from schedule:list command'
             )
-            ->setName(self::$defaultName)
+            ->setName(self::getDefaultName())
         ;
     }
 
